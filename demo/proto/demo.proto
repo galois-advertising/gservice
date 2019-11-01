@@ -1,0 +1,19 @@
+syntax = "proto3";
+import "ovlexp.proto";
+package demo;
+
+message demo_request {
+    ovlexp ovl = 1;
+    string name = 2;
+};
+
+
+message demo_response {
+    string name = 1;
+    int32 len = 2;
+};
+
+service demo_service 
+{
+    rpc get_length(demo_request) returns (demo_response);
+};

@@ -1,0 +1,11 @@
+syntax = "proto3";
+package ovlexp;
+
+message parameter {
+    string name = 1;
+    string value = 2;
+};
+
+message ovlexp {
+    repeated parameter parms = 1;
+}
