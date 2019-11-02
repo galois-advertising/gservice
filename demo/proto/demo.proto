@@ -3,7 +3,7 @@ import "ovlexp.proto";
 package demo;
 
 message demo_request {
-    ovlexp ovl = 1;
+    ovlexp.ovlexp ovl = 1;
     string name = 2;
 };
 
