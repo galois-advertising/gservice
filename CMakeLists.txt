@@ -1,4 +1,4 @@
-project(gservice)
+project(demo)
 cmake_minimum_required(VERSION 2.8)
 set (Tutorial_VERSION_MAJOR 1)
 set (Tutorial_VERSION_MINOR 0)
@@ -24,20 +24,22 @@ set(CMAKE_BUILD_TYPE "Release")
 
 include_directories("${PROJECT_SOURCE_DIR}/include")
 include_directories("${PROJECT_SOURCE_DIR}/")
-execute_process(COMMAND protoc -I=${PROJECT_SOURCE_DIR}/demo/proto --cpp_out=${PROJECT_SOURCE_DIR}/demo  ${PROJECT_SOURCE_DIR}/demo/proto/demo.proto)
-execute_process(COMMAND protoc -I=${PROJECT_SOURCE_DIR}/demo/proto --cpp_out=${PROJECT_SOURCE_DIR}/demo  ${PROJECT_SOURCE_DIR}/demo/proto/ovlexp.proto)
+execute_process(COMMAND protoc 
+    -I=${PROJECT_SOURCE_DIR}/demo/proto 
+    --cpp_out=${PROJECT_SOURCE_DIR}/demo  
+    ${PROJECT_SOURCE_DIR}/demo/proto/demo.proto)
+execute_process(COMMAND protoc 
+    -I=${PROJECT_SOURCE_DIR}/demo/proto 
+    --cpp_out=${PROJECT_SOURCE_DIR}/demo
+    ${PROJECT_SOURCE_DIR}/demo/proto/ovlexp.proto)
 
 find_package(Protobuf REQUIRED)
 include_directories(${Protobuf_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
-#protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS foo.proto)
-#protobuf_generate_python(PROTO_PY foo.proto)
 
-add_executable(gservice 
+add_executable(demo 
 "${PROJECT_SOURCE_DIR}/demo/demo.cpp" 
 "${PROJECT_SOURCE_DIR}/demo/demo.pb.cc" 
 "${PROJECT_SOURCE_DIR}/demo/ovlexp.pb.cc" 
-${PROTO_SRCS} 
-${PROTO_HDRS}
 )
-target_link_libraries(gservice ${Protobuf_LIBRARIES})
+target_link_libraries(demo ${Protobuf_LIBRARIES})

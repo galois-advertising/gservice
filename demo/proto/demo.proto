@@ -1,6 +1,7 @@
 syntax = "proto3";
 import "ovlexp.proto";
 package demo;
+option cc_generic_services = true;
 
 message demo_request {
     ovlexp.ovlexp ovl = 1;

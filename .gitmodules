@@ -1,0 +1,6 @@
+[submodule "ghead"]
+	path = ghead
+	url = https://github.com/galois-advertising/ghead
+[submodule "gpendingpool"]
+	path = gpendingpool
+	url = https://github.com/galois-advertising/gpendingpool
