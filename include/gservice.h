@@ -5,6 +5,8 @@
 
 namespace galois::gservice
 {
+work_thread
+
 
 template < template <class> query_content, 
     template <class> thread_content, 
@@ -19,6 +21,13 @@ public:
 
     }
     virtual ~gservice(){}
+    template <class work_type>
+    bool register_work(const char * name){
+
+    };
+    bool init(){}
+    bool run(){}
+    bool wait(){}
 }
 }
 

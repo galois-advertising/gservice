@@ -4,3 +4,6 @@
 [submodule "gpendingpool"]
 	path = gpendingpool
 	url = https://github.com/galois-advertising/gpendingpool
+[submodule "common"]
+	path = common
+	url = https://github.com/galois-advertising/common
