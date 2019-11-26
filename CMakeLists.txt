@@ -35,10 +35,12 @@ find_package(Protobuf REQUIRED)
 include_directories(${Protobuf_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
-add_subdirectory(ghead ${PROJECT_BINARY_DIR}/ghead)
-add_subdirectory(gpendingpool ${PROJECT_BINARY_DIR}/gpendingpool)
+add_subdirectory(ghead)
+add_subdirectory(gpendingpool)
+add_subdirectory(common/util)
 include_directories("${PROJECT_SOURCE_DIR}/gpendingpool/include")
 include_directories("${PROJECT_SOURCE_DIR}/ghead/include")
+include_directories("${PROJECT_SOURCE_DIR}/common/util/include")
 link_directories(${PROJECT_BINARY_DIR}/ghead)
 link_directories(${PROJECT_BINARY_DIR}/gpendingpool)
 
@@ -48,4 +50,4 @@ add_executable(demo
 "${PROJECT_SOURCE_DIR}/demo/ovlexp.pb.cc" 
 )
 
-target_link_libraries(demo gpendingpool ghead ${Protobuf_LIBRARIES})
+target_link_libraries(demo gpendingpool ghead common ${Protobuf_LIBRARIES})
