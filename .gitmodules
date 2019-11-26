@@ -1,9 +1,12 @@
 [submodule "ghead"]
 	path = ghead
 	url = https://github.com/galois-advertising/ghead
+	branch = master
 [submodule "gpendingpool"]
 	path = gpendingpool
 	url = https://github.com/galois-advertising/gpendingpool
+	branch = master
 [submodule "common"]
 	path = common
 	url = https://github.com/galois-advertising/common
+	branch = master
