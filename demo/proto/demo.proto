@@ -1,13 +1,13 @@
 syntax = "proto3";
-import "ovlexp.proto";
-package demo;
+import "gcontrol.proto";
+import "gconf_control.proto";
+package galois.gservice.demo;
 option cc_generic_services = true;
 
 message demo_request {
-    ovlexp.ovlexp ovl = 1;
+    gcontrol.control_t ctrl = 1;
     string name = 2;
 };
-
 
 message demo_response {
     string name = 1;
@@ -17,4 +17,5 @@ message demo_response {
 service demo_service 
 {
     rpc get_length(demo_request) returns (demo_response);
+    rpc gconf(gconf_ctrl_request) returns (gconf_ctrl_response);
 };

@@ -24,6 +24,7 @@ IF(NOT Boost_FOUND)
     MESSAGE("Can not find Boost")
 ENDIF()
 
+
 ADD_DEFINITIONS(-DBOOST_SPIRIT_THREADSAFE)
 ADD_DEFINITIONS(-DBOOST_ALL_DYN_LINK)
 
@@ -35,12 +36,14 @@ INCLUDE_DIRECTORIES("${PROJECT_SOURCE_DIR}/include")
 
 EXECUTE_PROCESS(COMMAND protoc 
     -I=${PROJECT_SOURCE_DIR}/demo/proto 
-    --cpp_out=${PROJECT_SOURCE_DIR}/demo  
+    -I=${PROJECT_SOURCE_DIR}/common/interface 
+    --cpp_out=${PROJECT_BINARY_DIR}/
     ${PROJECT_SOURCE_DIR}/demo/proto/demo.proto)
 EXECUTE_PROCESS(COMMAND protoc 
     -I=${PROJECT_SOURCE_DIR}/demo/proto 
-    --cpp_out=${PROJECT_SOURCE_DIR}/demo
-    ${PROJECT_SOURCE_DIR}/demo/proto/ovlexp.proto)
+    -I=${PROJECT_SOURCE_DIR}/common/interface 
+    --cpp_out=${PROJECT_BINARY_DIR}/
+    ${PROJECT_SOURCE_DIR}/common/interface/gcontrol.proto)
 
 FIND_PACKAGE(Protobuf REQUIRED)
 INCLUDE_DIRECTORIES(${Protobuf_INCLUDE_DIRS})
@@ -53,11 +56,14 @@ ADD_SUBDIRECTORY(common/util)
 INCLUDE_DIRECTORIES("${PROJECT_SOURCE_DIR}/gpendingpool/include")
 INCLUDE_DIRECTORIES("${PROJECT_SOURCE_DIR}/ghead/include")
 INCLUDE_DIRECTORIES("${PROJECT_SOURCE_DIR}/common/util/include")
+INCLUDE_DIRECTORIES("${PROJECT_BINARY_DIR}")
 
+
+add_subdirectory(../../.. ${CMAKE_CURRENT_BINARY_DIR}/grpc EXCLUDE_FROM_ALL)
 ADD_EXECUTABLE(demo 
 "${PROJECT_SOURCE_DIR}/demo/demo.cpp" 
-"${PROJECT_SOURCE_DIR}/demo/demo.pb.cc" 
-"${PROJECT_SOURCE_DIR}/demo/ovlexp.pb.cc" 
+"${PROJECT_BINARY_DIR}/demo.pb.cc" 
+"${PROJECT_BINARY_DIR}/gcontrol.pb.cc" 
 )
 
 TARGET_LINK_LIBRARIES(demo gpendingpool ghead common ${Protobuf_LIBRARIES})

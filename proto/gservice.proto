@@ -1,0 +1,9 @@
+syntax="proto3";
+package galois.gservice;
+
+message basic_conf {
+    string tcp_ip = 1;
+    uint32 tcp_port = 2;
+    string log_path = 3;
+    uint32 thread_count = 4;
+}
