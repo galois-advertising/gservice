@@ -10,3 +10,7 @@
 	path = common
 	url = https://github.com/galois-advertising/common
 	branch = master
+[submodule "gformat"]
+	path = gformat
+	url = https://github.com/galois-advertising/gformat
+	branch = master
